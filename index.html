@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lomba Hari Anak Nasional 2025 - Kab. Tabalong</title>
-    <!-- Menggunakan Tailwind CSS untuk styling -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Lambang_Kabupaten_Tabalong.png/1200px-Lambang_Kabupaten_Tabalong.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Menggunakan Google Fonts: Fredoka One for Headers, Inter for Body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,7 +29,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f9ff; /* sky-50 */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23f8b195' fill-opacity='0.1'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.1'%3E%3Cpolygon fill='%23f67280' points='100 100 0 100 0 0 100 0 100 100'/%3E%3Cpolygon fill='%23c06c84' points='100 100 100 200 200 200 200 100 100 100'/%3E%3C/g%3E%3C/svg%3E"), 
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23f8b195' fill-opacity='0.1'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.1'%3E%3Cpolygon fill='%23f67280' points='100 100 0 100 0 0 100 0 100 100'/%3E%3Cpolygon fill='%23c06c84' points='100 100 100 200 200 200 200 100 100 100'/%3E%3C/g%3E%3C/svg%3E"),
                               url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-opacity='0.1' fill='%236c5b7b'%3E%3Ccircle cx='34' cy='15' r='6'/%3E%3Cpath d='M180 40 a10 10 0 0 1 0 20 a10 10 0 0 1 0 -20'/%3E%3Cpath d='M10 180 a12 12 0 0 1 0 24 a12 12 0 0 1 0 -24'/%3E%3Ccircle cx='150' cy='160' r='8'/%3E%3Cpath d='M50 80 l10 10 l-10 10 l-10 -10z'/%3E%3C/g%3E%3C/svg%3E");
             animation: floaty-background 80s linear infinite;
         }
@@ -45,11 +44,41 @@
             z-index: 9999; flex-direction: column; gap: 1rem;
             backdrop-filter: blur(4px);
         }
+        .timer-box {
+            display: inline-block;
+            padding: 0.5rem 0.75rem;
+            margin: 0 0.25rem;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .timer-box span {
+            display: block;
+            font-weight: bold;
+        }
+        .timer-box span:first-child {
+            font-size: 1.75rem;
+            line-height: 1;
+        }
+        .timer-box span:last-child {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #4b5563; /* gray-600 */
+        }
+        /* Custom Alert Animation */
+        @keyframes alert-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes alert-zoom-in {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
+        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
-    <!-- Loading Overlay -->
     <div id="loadingOverlay">
         <svg class="animate-spin h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -58,12 +87,135 @@
         <p class="text-lg font-semibold text-gray-700">Memuat data dari server...</p>
     </div>
 
+    <!-- MODAL NOTIFIKASI BARU -->
+    <div id="customAlertModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full z-[10000] flex items-center justify-center p-4" style="animation: alert-fade-in 0.3s ease;">
+        <div class="relative mx-auto p-6 border w-full max-w-sm shadow-xl rounded-2xl bg-white" style="animation: alert-zoom-in 0.3s ease;">
+            <div class="mt-3 text-center">
+                <div id="customAlertIcon" class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mb-4">
+                    <!-- Icon will be injected here -->
+                </div>
+                <h3 id="customAlertTitle" class="text-lg leading-6 font-bold text-gray-900"></h3>
+                <div class="mt-2 px-2 py-3">
+                    <p id="customAlertMessage" class="text-sm text-gray-500"></p>
+                </div>
+                <div id="customAlertButtons" class="items-center px-4 py-3 gap-2 flex">
+                    <!-- Buttons will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL KODE AKSES -->
+    <div id="kodeAksesModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
+        <div class="relative mx-auto p-5 border w-full max-w-sm shadow-lg rounded-2xl bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-bold text-gray-900">Masukkan Kode Akses</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+                        Untuk melanjutkan, masukkan kode akses yang telah diberikan untuk:
+                    </p>
+                    <p id="modalLembagaNama" class="text-lg font-bold text-blue-600 my-2"></p>
+                    <form id="kodeAksesForm">
+                        <input type="password" id="kodeAksesInput" placeholder="******" class="w-full px-4 py-3 text-center bg-gray-100 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-lg tracking-widest">
+                        <p id="kodeAksesError" class="text-red-500 text-sm mt-2 hidden">Kode akses salah. Coba lagi.</p>
+                    </form>
+                </div>
+                <div class="items-center px-4 py-3 gap-2 flex">
+                    <button id="cancelKodeAkses" type="button" class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-sm hover:bg-gray-300 transition-all">
+                        Batal
+                    </button>
+                    <button id="submitKodeAkses" type="button" class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all">
+                        Lanjutkan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PASSWORD EXPORT -->
+    <div id="exportPasswordModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
+        <div class="relative mx-auto p-5 border w-full max-w-sm shadow-lg rounded-2xl bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-bold text-gray-900">Akses Terbatas !!!</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+                        Masukkan kata sandi untuk melanjutkan proses export.
+                    </p>
+                    <form id="exportPasswordForm" autocomplete="off">
+                        <input type="password" id="exportPasswordInput" autocomplete="new-password" placeholder="******" class="w-full px-4 py-3 mt-3 text-center bg-gray-100 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-lg">
+                        <p id="exportPasswordError" class="text-red-500 text-sm mt-2 hidden">Kata sandi salah.</p>
+                    </form>
+                </div>
+                <div class="items-center px-4 py-3 gap-2 flex">
+                    <button id="cancelExport" type="button" class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-sm hover:bg-gray-300 transition-all">
+                        Batal
+                    </button>
+                    <button id="submitExport" type="button" class="w-full px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-all">
+                        Export
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODAL UJI COBA -->
+    <div id="trialAccessModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
+        <div class="relative mx-auto p-5 border w-full max-w-sm shadow-lg rounded-2xl bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-bold text-gray-900">Akses Uji Coba</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+                        Fitur ini hanya untuk keperluan pengujian. Masukkan kata sandi untuk melanjutkan.
+                    </p>
+                    <form id="trialAccessForm" autocomplete="off">
+                        <input type="password" id="trialAccessInput" autocomplete="new-password" placeholder="******" class="w-full px-4 py-3 mt-3 text-center bg-gray-100 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-lg">
+                        <p id="trialAccessError" class="text-red-500 text-sm mt-2 hidden">Kata sandi salah.</p>
+                    </form>
+                </div>
+                <div class="items-center px-4 py-3 gap-2 flex">
+                    <button id="cancelTrialAccess" type="button" class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-sm hover:bg-gray-300 transition-all">
+                        Batal
+                    </button>
+                    <button id="submitTrialAccess" type="button" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition-all">
+                        Masuk
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ADMIN -->
+    <div id="adminLoginModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
+        <div class="relative mx-auto p-5 border w-full max-w-sm shadow-lg rounded-2xl bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-bold text-gray-900">Login Admin</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">
+                        Masukkan kata sandi admin untuk mengakses fitur khusus.
+                    </p>
+                    <form id="adminLoginForm" autocomplete="off">
+                        <input type="password" id="adminPasswordInput" autocomplete="new-password" placeholder="******" class="w-full px-4 py-3 mt-3 text-center bg-gray-100 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-lg">
+                        <p id="adminLoginError" class="text-red-500 text-sm mt-2 hidden">Kata sandi salah.</p>
+                    </form>
+                </div>
+                <div class="items-center px-4 py-3 gap-2 flex">
+                    <button id="cancelAdminLogin" type="button" class="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-sm hover:bg-gray-300 transition-all">
+                        Batal
+                    </button>
+                    <button id="submitAdminLogin" type="button" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KONTEN UTAMA -->
     <div class="w-full max-w-md mx-auto bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 border-4 border-white">
 
-        <!-- Tahap 1: Input Data Peserta -->
         <div id="inputSection">
             <div class="flex justify-center items-center gap-4 mb-6">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq9BqgIl6ON8ljjfpIV1tbRhV2cA_K_iYzcg&s" class="h-16" onerror="this.src='https://placehold.co/100x100/EEE/31343C?text=Logo'">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq9BqgIl6ON8ljjfpIV1tbRhV2cA_K_iYzcg&s" class="h-16" alt="Logo Tut Wuri Handayani" onerror="this.src='https://placehold.co/100x100/EEE/31343C?text=Logo'">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Lambang_Kabupaten_Tabalong.png/1200px-Lambang_Kabupaten_Tabalong.png" alt="Logo Tabalong" class="h-20" onerror="this.src='https://placehold.co/100x100/EEE/31343C?text=Logo'">
                 <img src="https://awsimages.detik.net.id/community/media/visual/2025/07/09/logo-hari-anak-nasional-2025-1752054507039.png?w=800" alt="Logo HAN" class="h-16" onerror="this.src='https://placehold.co/100x100/EEE/31343C?text=Logo'">
             </div>
@@ -71,21 +223,34 @@
                 <h1 class="text-3xl font-fredoka text-blue-600">Pengambilan Nomor Urut Peserta Karnaval</h1>
                 <p class="text-gray-600 mt-2 font-semibold">Hari Anak Nasional Tahun 2025<br>Kabupaten Tabalong</p>
             </div>
+            
+            <div id="adminModeBanner" class="hidden text-center font-bold p-3 rounded-lg my-4 bg-blue-100 text-blue-800 border border-blue-300">
+                👑 ANDA LOGIN SEBAGAI ADMIN 👑
+            </div>
+            <div id="trialModeBanner" class="hidden text-center font-bold p-3 rounded-lg my-4 bg-purple-100 text-purple-800 border border-purple-300">
+                ⚠️ ANDA DALAM MODE UJI COBA ⚠️
+            </div>
+
+            <div id="sisaWaktuContainer" class="text-center p-3 rounded-lg my-4 hidden"></div>
+            
+            <div id="timeRestrictionMessage" class="text-center font-semibold p-4 rounded-lg my-4 hidden"></div>
+            <div id="viewDaftarBeforeStartContainer" class="hidden"></div>
+
+
             <form id="dataForm" class="space-y-4">
                 <div class="relative" id="searchContainer">
                     <label for="searchLembaga" class="block text-sm font-medium text-gray-700 mb-2">Cari PAUD / TK Anda</label>
                     <input type="text" id="searchLembaga" placeholder="Ketik untuk mencari..." class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                     <div id="dropdownMenu" class="hidden absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-48 overflow-y-auto p-1">
-                        <!-- Hasil pencarian akan muncul di sini -->
-                    </div>
+                        </div>
                 </div>
-                
+
                 <div id="detailSekolah" class="hidden space-y-3 text-sm bg-blue-50 p-4 rounded-lg border border-blue-200">
                     <div class="grid grid-cols-3 gap-x-2">
                         <strong class="col-span-1">NPSN</strong><span id="detailNpsn" class="col-span-2 text-gray-700"></span>
                         <strong class="col-span-1">Status</strong><span id="detailStatus" class="col-span-2 text-gray-700"></span>
                         <strong class="col-span-1">Kecamatan</strong><span id="detailKecamatan" class="col-span-2 text-gray-700"></span>
-                        <strong class="col-span-1">Jml. Peserta</strong><span id="detailJumlah" class="col-span-2 text-gray-700"></span>
+                        <strong class="col-span-1">Jumlah Peserta</strong><span id="detailJumlah" class="col-span-2 text-gray-700"></span>
                     </div>
                     <div class="border-t border-blue-200 pt-2 mt-2">
                         <strong class="block mb-1">Guru Perwakilan:</strong>
@@ -104,7 +269,6 @@
             </form>
         </div>
 
-        <!-- Tahap 2: Proses Spin Nomor -->
         <div id="spinnerSection" class="hidden text-center">
             <div class="bg-gradient-to-r from-purple-50 to-indigo-100 p-4 rounded-xl mb-6 border border-purple-200">
                 <div class="flex items-center justify-center gap-2">
@@ -112,11 +276,11 @@
                     <h2 id="displayNamaLembaga" class="text-xl text-indigo-700 font-bold"></h2>
                 </div>
             </div>
-            <p class="text-gray-600 mb-4 font-fredoka text-2xl">Ayo kita hitung!</p>
+            <p class="text-gray-600 mb-4 font-fredoka text-2xl">Ayo kita ambil nomor!</p>
             <div id="spinnerDisplay" class="text-8xl font-fredoka text-gray-800 my-8 bg-gray-100 p-6 rounded-2xl pulse-bg-animation">000</div>
             <div class="space-y-3">
                 <button id="spinBtn" class="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white font-bold py-3 px-4 rounded-xl hover:shadow-lg hover:scale-105 transform transition-all shadow-md text-lg">
-                    Putar Sekarang!
+                    Ambil Nomor!
                 </button>
                 <button id="cancelBtn" class="w-full bg-transparent text-gray-600 font-semibold py-2 px-4 rounded-xl hover:bg-gray-100 transition-all text-sm">
                     Batalkan & Pilih Lagi
@@ -127,9 +291,8 @@
             </div>
         </div>
 
-        <!-- Tahap 3: Hasil Nomor Urut -->
         <div id="resultSection" class="hidden text-center">
-            <h2 class="text-3xl font-fredoka text-yellow-500 mb-3">Hore!</h2>
+            <h2 class="text-5xl font-fredoka text-yellow-500 mb-3">Hore!</h2>
             <p class="text-gray-600 mb-6">Kamu mendapatkan nomor urut:</p>
             <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6">
                 <div id="nomorUrut" class="text-8xl font-fredoka text-blue-600 my-2 pop-in"></div>
@@ -159,27 +322,20 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="viewDaftarSection" class="hidden">
             <div class="text-center mb-6">
-                <h1 class="text-3xl font-fredoka text-blue-600">Daftar Peserta</h1>
-                 <p class="text-gray-600 mt-2">Rekapitulasi lembaga yang sudah terdaftar.</p>
+                <h1 id="viewDaftarTitle" class="text-3xl font-fredoka text-blue-600"></h1>
+                <p id="viewDaftarSubtitle" class="text-gray-600 mt-2"></p>
             </div>
             <div class="overflow-x-auto bg-white rounded-lg border max-h-96">
                 <table class="min-w-full text-sm table-auto">
-                    <thead class="bg-gray-50 sticky top-0">
-                        <tr>
-                            <th class="p-3 font-semibold text-gray-600">No.</th>
-                            <th class="p-3 font-semibold text-gray-600 text-left">Nama Lembaga</th>
-                            <th class="p-3 font-semibold text-gray-600 text-left">NPSN</th>
-                            <th class="p-3 font-semibold text-gray-600 text-left">Status</th>
-                            <th class="p-3 font-semibold text-gray-600 text-left">Kecamatan</th>
-                        </tr>
-                    </thead>
+                    <thead id="viewDaftarThead" class="bg-gray-50 sticky top-0">
+                        </thead>
                     <tbody id="daftarBodyView" class="divide-y divide-gray-200"></tbody>
                 </table>
             </div>
-            <div class="grid grid-cols-2 gap-4 mt-6">
+            <div id="viewDaftarActions" class="grid grid-cols-2 gap-4 mt-6">
                 <button id="kembaliBtn" class="w-full bg-white text-gray-700 font-semibold py-3 px-4 rounded-xl hover:shadow-lg hover:bg-gray-50 transform transition-all border-2 border-gray-200 shadow-sm flex items-center justify-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" /></svg>
                     Kembali
@@ -190,14 +346,36 @@
                 </button>
             </div>
         </div>
+
+        <div class="text-center mt-8 border-t-2 border-gray-100 pt-4">
+            <p class="text-sm font-semibold text-gray-600">Dinas Pendidikan & Kebudayaan</p>
+            <p class="text-sm font-medium text-gray-500">Bidang PAUD & DIKMAS</p>
+            <p class="text-xs text-gray-400 mt-2">Author: Dhiya</p>
+            <button id="adminLoginBtn" class="text-xs text-gray-400 hover:text-blue-600 transition-all mt-2">[ Login Admin ]</button>
+        </div>
     </div>
 
     <script>
+
+        const TANGGAL_MULAI = '2025-09-08T08:00:00';
+        const TANGGAL_SELESAI = '2025-09-09T17:00:00'; 
+        const KATA_SANDI_UJI_COBA = 'coba123';
+        const KATA_SANDI_ADMIN = 'admin123';
+        const SPIN_DURATION = 1500;
+        const SPIN_INTERVAL = 50;
+
         // --- URL Google Apps Script Web App ---
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycby5GInfTSSyg7AsVEVaJxUj-OXFD5suqbnepWdyT9dRgNAUn6pKjomzOAwo6txU42shRg/exec';
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz-IVwGOP8M4y2c04iUpS0tSkSkxKQIhBFexVCsTKO7UdPamGxuHRZRfYPSAueLTGGrsA/exec';
 
         // --- Mengambil elemen dari DOM ---
         const loadingOverlay = document.getElementById('loadingOverlay');
+        const customAlertModal = document.getElementById('customAlertModal');
+        const customAlertTitle = document.getElementById('customAlertTitle');
+        const customAlertMessage = document.getElementById('customAlertMessage');
+        const customAlertButtons = document.getElementById('customAlertButtons');
+        const customAlertIcon = document.getElementById('customAlertIcon');
+        const adminModeBanner = document.getElementById('adminModeBanner');
+        const trialModeBanner = document.getElementById('trialModeBanner');
         const inputSection = document.getElementById('inputSection');
         const spinnerSection = document.getElementById('spinnerSection');
         const resultSection = document.getElementById('resultSection');
@@ -215,7 +393,9 @@
         const kembaliBtn = document.getElementById('kembaliBtn');
         const daftarBodyResult = document.getElementById('daftarBodyResult');
         const daftarBodyView = document.getElementById('daftarBodyView');
-        const exportBtns = document.querySelectorAll('.export-btn');
+        const viewDaftarTitle = document.getElementById('viewDaftarTitle');
+        const viewDaftarSubtitle = document.getElementById('viewDaftarSubtitle');
+        const viewDaftarThead = document.getElementById('viewDaftarThead');
         const detailSekolahDiv = document.getElementById('detailSekolah');
         const detailNpsnSpan = document.getElementById('detailNpsn');
         const detailStatusSpan = document.getElementById('detailStatus');
@@ -226,67 +406,402 @@
         const dropdownMenu = document.getElementById('dropdownMenu');
         const cancelBtn = document.getElementById('cancelBtn');
         const searchContainer = document.getElementById('searchContainer');
+        const timeRestrictionMessage = document.getElementById('timeRestrictionMessage');
+        const viewDaftarBeforeStartContainer = document.getElementById('viewDaftarBeforeStartContainer');
+        const sisaWaktuContainer = document.getElementById('sisaWaktuContainer');
+        const kodeAksesModal = document.getElementById('kodeAksesModal');
+        const kodeAksesForm = document.getElementById('kodeAksesForm');
+        const cancelKodeAkses = document.getElementById('cancelKodeAkses');
+        const submitKodeAkses = document.getElementById('submitKodeAkses');
+        const modalLembagaNama = document.getElementById('modalLembagaNama');
+        const kodeAksesInput = document.getElementById('kodeAksesInput');
+        const kodeAksesError = document.getElementById('kodeAksesError');
+        const exportPasswordModal = document.getElementById('exportPasswordModal');
+        const exportPasswordForm = document.getElementById('exportPasswordForm');
+        const cancelExport = document.getElementById('cancelExport');
+        const submitExport = document.getElementById('submitExport');
+        const exportPasswordInput = document.getElementById('exportPasswordInput');
+        const exportPasswordError = document.getElementById('exportPasswordError');
+        const trialAccessModal = document.getElementById('trialAccessModal');
+        const trialAccessForm = document.getElementById('trialAccessForm');
+        const cancelTrialAccess = document.getElementById('cancelTrialAccess');
+        const submitTrialAccess = document.getElementById('submitTrialAccess');
+        const trialAccessInput = document.getElementById('trialAccessInput');
+        const trialAccessError = document.getElementById('trialAccessError');
+        const adminLoginModal = document.getElementById('adminLoginModal');
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const cancelAdminLogin = document.getElementById('cancelAdminLogin');
+        const submitAdminLogin = document.getElementById('submitAdminLogin');
+        const adminPasswordInput = document.getElementById('adminPasswordInput');
+        const adminLoginError = document.getElementById('adminLoginError');
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const viewDaftarActions = document.getElementById('viewDaftarActions');
+        const exportBtnView = document.getElementById('exportBtnView');
+        const exportBtns = document.querySelectorAll('.export-btn');
+        
+        // --- Variabel State Aplikasi ---
+        let maxNumber = 0, daftarPeserta = [], masterLembagaData = [], lembagaTersedia = [];
+        let selectedLembaga = null, countdownInterval = null, reliableCurrentTime = null;
+        let isTrialAccessGranted = false, isAdminLoggedIn = false;
+        
+        // --- ICONS for Custom Alert ---
+        const ICONS = {
+            success: `<svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+            warning: `<svg class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>`,
+            error: `<svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>`,
+            info: `<svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>`
+        };
 
-        // --- Variabel untuk menyimpan data ---
-        const SPIN_DURATION = 3000;
-        const SPIN_INTERVAL = 50;
-        const MAX_NUMBER = 100;
-        let daftarPeserta = []; // Data peserta terdaftar dari server
-        let masterLembagaData = []; // Data master lembaga dari server
-        let lembagaTersedia = []; // Lembaga yang belum mendaftar
-        let selectedLembaga = null;
-
-        // --- Fungsi untuk memuat data dari Google Sheets ---
+        function showCustomNotice(message, title = 'Informasi', type = 'info') {
+            return new Promise(resolve => {
+                customAlertTitle.textContent = title;
+                customAlertMessage.innerHTML = message;
+                customAlertButtons.innerHTML = '';
+                let iconContainer = customAlertIcon;
+                iconContainer.innerHTML = ICONS[type] || ICONS.info;
+                let colorClass = { success: 'bg-green-100', warning: 'bg-yellow-100', error: 'bg-red-100', info: 'bg-blue-100', confirm: 'bg-yellow-100' }[type] || 'bg-blue-100';
+                iconContainer.className = `mx-auto flex items-center justify-center h-12 w-12 rounded-full ${colorClass} mb-4`;
+                const closeModal = (value) => {
+                    customAlertModal.classList.add('hidden');
+                    resolve(value);
+                };
+                if (type === 'confirm') {
+                    const confirmBtn = document.createElement('button');
+                    confirmBtn.textContent = 'Ya, Lanjutkan';
+                    confirmBtn.className = 'w-full px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition-all';
+                    confirmBtn.onclick = () => closeModal(true);
+                    const cancelBtn = document.createElement('button');
+                    cancelBtn.textContent = 'Batal';
+                    cancelBtn.className = 'w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow-sm hover:bg-gray-300 transition-all';
+                    cancelBtn.onclick = () => closeModal(false);
+                    customAlertButtons.append(cancelBtn, confirmBtn);
+                } else {
+                    const okBtn = document.createElement('button');
+                    okBtn.textContent = 'OK';
+                    okBtn.className = 'w-full px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all';
+                    okBtn.onclick = () => closeModal(true);
+                    customAlertButtons.append(okBtn);
+                }
+                customAlertModal.classList.remove('hidden');
+            });
+        }
+        
         async function loadDataFromServer() {
             loadingOverlay.style.display = 'flex';
             try {
-                // Menggunakan Promise.all untuk mengambil kedua data secara paralel
+                const timeResponse = await fetch('https://worldtimeapi.org/api/timezone/Asia/Makassar');
+                if (!timeResponse.ok) throw new Error('Gagal mengambil waktu dari server.');
+                const timeData = await timeResponse.json();
+                reliableCurrentTime = new Date(timeData.datetime);
+            } catch (error) {
+                reliableCurrentTime = new Date();
+            }
+            try {
                 const [pesertaRes, lembagaRes] = await Promise.all([
                     fetch(`${WEB_APP_URL}?action=getDaftarPeserta&t=${new Date().getTime()}`),
                     fetch(`${WEB_APP_URL}?action=getLembagaList&t=${new Date().getTime()}`)
                 ]);
-
                 if (!pesertaRes.ok) throw new Error(`Gagal mengambil daftar peserta (Status: ${pesertaRes.status})`);
                 if (!lembagaRes.ok) throw new Error(`Gagal mengambil daftar lembaga (Status: ${lembagaRes.status})`);
-                
                 const pesertaData = await pesertaRes.json();
                 const lembagaData = await lembagaRes.json();
-
                 daftarPeserta = pesertaData.data || [];
                 masterLembagaData = lembagaData.data || [];
-                
+                maxNumber = masterLembagaData.length;
                 const lembagaTerdaftarNpsn = daftarPeserta.map(p => p.npsn);
                 lembagaTersedia = masterLembagaData.filter(l => !lembagaTerdaftarNpsn.includes(l.npsn));
-
-                updateDaftarTampilan();
+                updateDaftarTampilan(reliableCurrentTime);
                 renderLembagaList(lembagaTersedia);
-
+                checkTimeRestriction(reliableCurrentTime);
             } catch (error) {
                 console.error('Error saat memuat data:', error);
-                alert(`Gagal terhubung ke server. Pastikan skrip Google Anda telah di-deploy dengan benar (pada bagian "Who has access" harus diatur ke "Anyone") dan periksa kembali koneksi internet Anda.\n\nDetail Error: ${error.message}`);
+                await showCustomNotice(`Gagal terhubung ke server. Pastikan skrip Google Anda telah di-deploy dan periksa koneksi internet Anda.<br><br><b>Detail Error:</b> ${error.message}`, 'Kesalahan Jaringan', 'error');
+            } finally {
+                loadingOverlay.style.display = 'none';
+            }
+        }
+        
+        async function handleDeleteRegistration(npsn, namaLembaga) {
+            const confirmed = await showCustomNotice(`Apakah Anda yakin ingin <b>MEMBATALKAN</b> pendaftaran untuk "${namaLembaga}"?<br><br>Aksi ini akan menghapus nomor urut mereka dan mengizinkan mereka untuk mendaftar ulang.`, 'Konfirmasi Pembatalan', 'confirm');
+            if (!confirmed) return;
+            loadingOverlay.style.display = 'flex';
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'deletePendaftaran', npsn: npsn })
+                });
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const result = await response.json();
+                if (result.status !== 'success') throw new Error(result.message || 'Server gagal menghapus data.');
+                await showCustomNotice(`Pendaftaran untuk "${namaLembaga}" berhasil dibatalkan.`, 'Berhasil', 'success');
+                await loadDataFromServer();
+            } catch (error) {
+                console.error('Gagal membatalkan pendaftaran:', error);
+                await showCustomNotice(`Gagal membatalkan pendaftaran. <br><br><b>Detail Error:</b> ${error.message}`, 'Gagal', 'error');
+            } finally {
+                loadingOverlay.style.display = 'none';
+            }
+        }
+        
+        async function handleAdminLogin() {
+            if (adminPasswordInput.value === KATA_SANDI_ADMIN) {
+                isAdminLoggedIn = true;
+                adminLoginModal.classList.add('hidden');
+                adminLoginBtn.textContent = `[ Logout Admin ]`;
+                adminModeBanner.classList.remove('hidden');
+                adminPasswordInput.value = ''; // Membersihkan input setelah login
+                checkTimeRestriction(reliableCurrentTime); // Re-check time to unlock UI
+                updateDaftarTampilan(reliableCurrentTime);
+                await showCustomNotice('Login Admin berhasil!', 'Selamat Datang', 'success');
+            } else {
+                adminLoginError.classList.remove('hidden');
+            }
+        }
+
+        async function exportToExcel() {
+            loadingOverlay.style.display = 'flex';
+            try {
+                 const res = await fetch(`${WEB_APP_URL}?action=getDaftarPeserta&t=${new Date().getTime()}`);
+                if (!res.ok) throw new Error(`Gagal mengambil data untuk export (Status: ${res.status})`);
+                const serverData = await res.json();
+                const dataToExport = serverData.data || [];
+                if (dataToExport.length === 0) { 
+                    await showCustomNotice("Tidak ada data untuk di-export.", "Informasi", "info");
+                    return; 
+                };
+                const masterDataMap = new Map(masterLembagaData.map(item => [item.npsn, item]));
+                const headers = ['No. Urut', 'Nama Lembaga', 'NPSN', 'Status', 'Kecamatan', 'Jumlah Peserta', 'Guru 1', 'Jabatan 1', 'Guru 2', 'Jabatan 2', 'Guru 3', 'Jabatan 3', 'Kode Akses'];
+                const rows = dataToExport.sort((a,b) => a.nomor - b.nomor).map(p => {
+                    const master = masterDataMap.get(p.npsn) || {};
+                    return [
+                        `'${String(p.nomor).padStart(3, '0')}`,
+                        `"${p.nama}"`, `"${p.npsn}"`, `"${p.status}"`, `"${p.kecamatan}"`,
+                        master.jumlah || '', `"${master.guru1 || ''}"`, `"${master.jabatan1 || ''}"`,
+                        `"${master.guru2 || ''}"`, `"${master.jabatan2 || ''}"`, `"${master.guru3 || ''}"`, `"${master.jabatan3 || ''}"`, `"${master.kode_akses || ''}"`
+                    ];
+                });
+                let csvContent = "data:text/csv;charset=utf-8," + headers.join(",") + "\n" + rows.map(e => e.join(",")).join("\n");
+                var encodedUri = encodeURI(csvContent);
+                var link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "daftar_peserta_lomba_han_2025.csv");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch(error) {
+                await showCustomNotice(`Gagal mengekspor data. <br><br><b>Detail Error:</b> ${error.message}`, 'Gagal', 'error');
             } finally {
                 loadingOverlay.style.display = 'none';
             }
         }
 
-        function updateDaftarTampilan() {
-            daftarPeserta.sort((a, b) => a.nomor - b.nomor);
-            let rowsHtmlResult = '';
-            let rowsHtmlView = '';
-            if (daftarPeserta.length === 0) {
-                const emptyMsg = '<tr><td colspan="5" class="p-4 text-center text-gray-500">Belum ada peserta terdaftar.</td></tr>';
-                rowsHtmlResult = '<tr><td colspan="3" class="p-4 text-center text-gray-500">Belum ada peserta terdaftar.</td></tr>';
-                rowsHtmlView = emptyMsg;
-                exportBtns.forEach(btn => btn.disabled = true);
+        adminLoginBtn.addEventListener('click', async () => {
+            if (isAdminLoggedIn) {
+                isAdminLoggedIn = false;
+                adminLoginBtn.textContent = `[ Login Admin ]`;
+                adminModeBanner.classList.add('hidden');
+                checkTimeRestriction(reliableCurrentTime); // Re-check time to lock UI
+                updateDaftarTampilan(reliableCurrentTime);
+                await showCustomNotice('Logout Admin berhasil.', 'Informasi', 'info');
             } else {
-                daftarPeserta.forEach(peserta => {
-                    rowsHtmlResult += `<tr class="hover:bg-yellow-50 even:bg-blue-50/50"><td class="p-3 text-center font-bold text-blue-600">${String(peserta.nomor).padStart(3, '0')}</td><td class="p-3 text-left">${peserta.nama}</td><td class="p-3 text-left">${peserta.kecamatan}</td></tr>`;
-                    rowsHtmlView += `<tr class="hover:bg-yellow-50 even:bg-blue-50/50"><td class="p-3 text-center font-bold text-blue-600">${String(peserta.nomor).padStart(3, '0')}</td><td class="p-3 text-left break-words">${peserta.nama}</td><td class="p-3 text-left">${peserta.npsn}</td><td class="p-3 text-left">${peserta.status}</td><td class="p-3 text-left">${peserta.kecamatan}</td></tr>`;
-                });
-                exportBtns.forEach(btn => btn.disabled = false);
+                adminPasswordInput.value = ''; // Membersihkan input sebelum menampilkan modal
+                adminLoginError.classList.add('hidden');
+                adminLoginModal.classList.remove('hidden');
+                adminPasswordInput.focus();
             }
+        });
+
+        spinBtn.addEventListener('click', function() {
+            const nomorSudahDipakai = daftarPeserta.map(p => p.nomor);
+            if (!isTrialAccessGranted && nomorSudahDipakai.length >= maxNumber) {
+                spinBtn.classList.add('hidden');
+                nomorHabisMessage.classList.remove('hidden');
+                spinnerDisplay.textContent = "---";
+                return;
+            }
+            spinBtn.disabled = true;
+            spinBtn.textContent = 'Mengambil...';
+            spinBtn.classList.remove('bg-gradient-to-r', 'from-green-500', 'to-teal-500');
+            spinBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+            let spinInterval = setInterval(() => {
+                const randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+                spinnerDisplay.textContent = String(randomNumber).padStart(3, '0');
+            }, 50);
+
+            setTimeout(async () => {
+                clearInterval(spinInterval);
+                let finalNumber;
+                do {
+                    finalNumber = Math.floor(Math.random() * maxNumber) + 1;
+                } while (!isTrialAccessGranted && !isAdminLoggedIn && nomorSudahDipakai.includes(finalNumber));
+                
+                const dataUntukDisimpan = { nomor: finalNumber, ...selectedLembaga };
+                const formattedFinalNumber = String(finalNumber).padStart(3, '0');
+                
+                spinnerDisplay.textContent = formattedFinalNumber;
+                nomorUrutDisplay.textContent = formattedFinalNumber;
+
+                if (isTrialAccessGranted) {
+                    resultNamaLembaga.innerHTML = `${selectedLembaga.nama} <span class="text-purple-600 font-bold">(UJI COBA)</span>`;
+                    setTimeout(() => {
+                        spinnerSection.classList.add('hidden');
+                        resultSection.classList.remove('hidden');
+                    }, 500);
+                    return;
+                }
+                
+                resultNamaLembaga.textContent = selectedLembaga.nama;
+                try {
+                    const response = await fetch(WEB_APP_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({ action: 'savePendaftaran', data: dataUntukDisimpan })
+                    });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const result = await response.json();
+                    if(result.status !== 'success') throw new Error(result.message || 'Server error.');
+                    
+                    daftarPeserta.push(dataUntukDisimpan);
+                    updateDaftarTampilan(reliableCurrentTime);
+                    
+                    setTimeout(() => {
+                        spinnerSection.classList.add('hidden');
+                        resultSection.classList.remove('hidden');
+                    }, 500);
+                } catch (err) {
+                    console.error('Error saat menyimpan:', err);
+                    await showCustomNotice(`Gagal menyimpan data ke server. Silakan coba lagi.<br><br><b>Detail Error:</b> ${err.message}`, 'Gagal', 'error');
+                    
+                    spinBtn.disabled = false;
+                    spinBtn.textContent = 'Ambil Nomor!';
+                    spinBtn.classList.add('bg-gradient-to-r', 'from-green-500', 'to-teal-500');
+                    spinBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                }
+            }, SPIN_DURATION);
+        });
+
+        function updateTimer(targetDate, element, onEnd, prefix, suffix, now) {
+            const distance = targetDate - now;
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                onEnd();
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            element.innerHTML = `
+                <p class="mb-2 font-semibold">${prefix}</p>
+                <div>
+                    ${days > 0 ? `<div class="timer-box"><span>${String(days).padStart(2, '0')}</span><span>Hari</span></div>` : ''}
+                    <div class="timer-box"><span>${String(hours).padStart(2, '0')}</span><span>Jam</span></div>
+                    <div class="timer-box"><span>${String(minutes).padStart(2, '0')}</span><span>Menit</span></div>
+                    <div class="timer-box"><span>${String(seconds).padStart(2, '0')}</span><span>Detik</span></div>
+                </div>
+                ${suffix ? `<p class="mt-2 text-sm text-gray-500">${suffix}</p>` : ''}
+            `;
+        }
+
+        function checkTimeRestriction(currentTime) {
+            if (isTrialAccessGranted || isAdminLoggedIn) {
+                timeRestrictionMessage.classList.add('hidden');
+                sisaWaktuContainer.classList.add('hidden');
+                viewDaftarBeforeStartContainer.classList.add('hidden');
+                document.getElementById('dataForm').querySelectorAll('button, div[id="searchContainer"]').forEach(el => el.classList.remove('hidden'));
+                if(isTrialAccessGranted) trialModeBanner.classList.remove('hidden');
+                return true; 
+            }
+            clearInterval(countdownInterval); 
+            const now = currentTime;
+            const startTime = new Date(TANGGAL_MULAI);
+            const endTime = new Date(TANGGAL_SELESAI);
+            const submitButton = dataForm.querySelector('button[type="submit"]');
+            const formElements = [searchContainer, submitButton, viewDaftarBtn];
+            const onTimerEnd = () => location.reload();
+
+            if (now < startTime) {
+                sisaWaktuContainer.classList.add('hidden');
+                timeRestrictionMessage.classList.remove('hidden');
+                timeRestrictionMessage.className = 'text-center font-semibold p-4 rounded-lg my-4 bg-yellow-100 text-yellow-800';
+                formElements.forEach(el => el.classList.add('hidden'));
+                updateTimer(startTime, timeRestrictionMessage, onTimerEnd, "Pendaftaran akan dibuka dalam:", null, now.getTime());
+                countdownInterval = setInterval(() => {
+                    now.setSeconds(now.getSeconds() + 1); 
+                    updateTimer(startTime, timeRestrictionMessage, onTimerEnd, "Pendaftaran akan dibuka dalam:", null, now.getTime());
+                }, 1000);
+                viewDaftarBeforeStartContainer.classList.remove('hidden');
+                viewDaftarBeforeStartContainer.innerHTML = `
+                    <button type="button" id="viewDaftarBeforeStartBtn" class="w-full bg-white text-gray-700 font-semibold py-3 px-4 rounded-xl hover:shadow-lg hover:bg-gray-50 transform transition-all border-2 border-gray-200 shadow-sm flex items-center justify-center gap-2 mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" /></svg>
+                        Lihat Daftar Lembaga
+                    </button>
+                    <button type="button" id="trialAccessBtn" class="w-full bg-purple-50 text-purple-700 font-semibold py-3 px-4 rounded-xl hover:shadow-lg hover:bg-purple-100 transform transition-all border-2 border-purple-200 shadow-sm flex items-center justify-center gap-2 mt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                        Uji Coba Aplikasi
+                    </button>
+                `;
+                document.getElementById('viewDaftarBeforeStartBtn').addEventListener('click', () => {
+                    inputSection.classList.add('hidden');
+                    viewDaftarSection.classList.remove('hidden');
+                });
+                document.getElementById('trialAccessBtn').addEventListener('click', () => {
+                    trialAccessModal.classList.remove('hidden');
+                    trialAccessInput.focus();
+                });
+                return false;
+            } else if (now > endTime) {
+                timeRestrictionMessage.innerHTML = `Waktu pengambilan nomor sudah berakhir.`;
+                timeRestrictionMessage.className = 'text-center font-semibold p-4 rounded-lg my-4 bg-red-100 text-red-800';
+                timeRestrictionMessage.classList.remove('hidden');
+                sisaWaktuContainer.classList.add('hidden');
+                formElements.forEach(el => el.classList.add('hidden'));
+                viewDaftarBeforeStartContainer.classList.add('hidden');
+                return false;
+            } else {
+                timeRestrictionMessage.classList.add('hidden');
+                sisaWaktuContainer.classList.remove('hidden');
+                sisaWaktuContainer.className = 'text-center p-3 rounded-lg my-4 bg-blue-100 text-blue-800';
+                formElements.forEach(el => el.classList.remove('hidden'));
+                viewDaftarBeforeStartContainer.classList.add('hidden');
+                updateTimer(endTime, sisaWaktuContainer, onTimerEnd, "Sisa waktu pendaftaran:", null, now.getTime());
+                countdownInterval = setInterval(() => {
+                    now.setSeconds(now.getSeconds() + 1);
+                    updateTimer(endTime, sisaWaktuContainer, onTimerEnd, "Sisa waktu pendaftaran:", null, now.getTime());
+                }, 1000);
+                return true;
+            }
+        }
+        
+        function updateDaftarTampilan(now) {
+            const startTime = new Date(TANGGAL_MULAI);
+            const isBeforeStart = now < startTime;
+            daftarPeserta.sort((a, b) => a.nomor - b.nomor);
+            let rowsHtmlResult = daftarPeserta.length === 0 ? '<tr><td colspan="3" class="p-4 text-center text-gray-500">Belum ada peserta terdaftar.</td></tr>' : daftarPeserta.map(p => `<tr class="hover:bg-yellow-50 even:bg-blue-50/50"><td class="p-3 text-center font-bold text-blue-600">${String(p.nomor).padStart(3, '0')}</td><td class="p-3 text-left">${p.nama}</td><td class="p-3 text-left">${p.kecamatan}</td></tr>`).join('');
             daftarBodyResult.innerHTML = rowsHtmlResult;
+            let rowsHtmlView = '';
+            if (isBeforeStart && !isTrialAccessGranted && !isAdminLoggedIn) {
+                viewDaftarTitle.textContent = 'Daftar Lembaga';
+                viewDaftarSubtitle.textContent = 'Hanya lembaga yang terdaftar di sistem yang bisa mengambil nomor urut.';
+                viewDaftarThead.innerHTML = `<tr><th class="p-3 font-semibold text-gray-600 text-left">Nama Lembaga</th><th class="p-3 font-semibold text-gray-600 text-left">NPSN</th><th class="p-3 font-semibold text-gray-600 text-left">Kecamatan</th></tr>`;
+                exportBtnView.classList.add('hidden');
+                viewDaftarActions.classList.remove('grid-cols-2');
+                viewDaftarActions.classList.add('grid-cols-1');
+                const sortedLembaga = [...masterLembagaData].sort((a,b) => a.nama.localeCompare(b.nama));
+                rowsHtmlView = sortedLembaga.length === 0 ? '<tr><td colspan="3" class="p-4 text-center text-gray-500">Belum ada data lembaga.</td></tr>' : sortedLembaga.map(l => `<tr class="hover:bg-yellow-50"><td class="p-3 text-left break-words">${l.nama}</td><td class="p-3 text-left">${l.npsn}</td><td class="p-3 text-left">${l.kecamatan}</td></tr>`).join('');
+            } else {
+                viewDaftarTitle.textContent = 'Daftar Peserta';
+                viewDaftarSubtitle.textContent = 'Rekapitulasi lembaga yang sudah mengambil Nomor Peserta Karnaval';
+                viewDaftarThead.innerHTML = `<tr><th class="p-3 font-semibold text-gray-600">No. Urut</th><th class="p-3 font-semibold text-gray-600 text-left">Nama Lembaga</th><th class="p-3 font-semibold text-gray-600 text-left">NPSN</th><th class="p-3 font-semibold text-gray-600 text-left">Kecamatan</th>${isAdminLoggedIn ? '<th class="p-3 font-semibold text-gray-600 text-center">Aksi</th>' : ''}</tr>`;
+                exportBtnView.classList.remove('hidden');
+                viewDaftarActions.classList.add('grid-cols-2');
+                viewDaftarActions.classList.remove('grid-cols-1');
+                rowsHtmlView = daftarPeserta.length === 0 ? `<tr><td colspan="${isAdminLoggedIn ? 5 : 4}" class="p-4 text-center text-gray-500">Belum ada peserta terdaftar.</td></tr>` : daftarPeserta.map(l => `<tr class="hover:bg-yellow-50"><td class="p-3 text-center font-bold text-blue-600">${String(l.nomor).padStart(3, '0')}</td><td class="p-3 text-left break-words">${l.nama}</td><td class="p-3 text-left">${l.npsn}</td><td class="p-3 text-left">${l.kecamatan}</td>${isAdminLoggedIn ? `<td class="p-3 text-center"><button class="text-red-500 hover:text-red-700 text-xs font-bold py-1 px-2 rounded-md bg-red-100 hover:bg-red-200 transition-all" data-npsn="${l.npsn}" data-nama="${l.nama}">Batalkan</button></td>` : ''}</tr>`).join('');
+            }
             daftarBodyView.innerHTML = rowsHtmlView;
+            if (isAdminLoggedIn) {
+                document.querySelectorAll('#daftarBodyView button[data-npsn]').forEach(button => button.addEventListener('click', (e) => handleDeleteRegistration(e.target.dataset.npsn, e.target.dataset.nama)));
+            }
+            exportBtns.forEach(btn => btn.disabled = (daftarPeserta.length === 0));
         }
         
         function renderLembagaList(items) {
@@ -309,11 +824,7 @@
                     detailStatusSpan.textContent = `: ${item.status}`;
                     detailKecamatanSpan.textContent = `: ${item.kecamatan}`;
                     detailJumlahSpan.textContent = `: ${item.jumlah} orang`;
-                    detailGuruDiv.innerHTML = `
-                        <p>1. ${item.guru1} (${item.jabatan1})</p>
-                        <p>2. ${item.guru2} (${item.jabatan2})</p>
-                        <p>3. ${item.guru3} (${item.jabatan3})</p>
-                    `;
+                    detailGuruDiv.innerHTML = `<p>1. ${item.guru1} (${item.jabatan1})</p><p>2. ${item.guru2} (${item.jabatan2})</p><p>3. ${item.guru3} (${item.jabatan3})</p>`;
                     detailSekolahDiv.classList.remove('hidden');
                     dropdownMenu.classList.add('hidden');
                 });
@@ -341,108 +852,82 @@
             }
         });
         
-        dataForm.addEventListener('submit', function(event) {
+        dataForm.addEventListener('submit', async function(event) {
             event.preventDefault();
+            if (!reliableCurrentTime) {
+                await showCustomNotice("Waktu belum tersinkronisasi. Mohon muat ulang halaman.", "Peringatan", "warning");
+                return;
+            }
+            const now = reliableCurrentTime;
+            const startTime = new Date(TANGGAL_MULAI);
+            const endTime = new Date(TANGGAL_SELESAI);
+            if (!isTrialAccessGranted && !isAdminLoggedIn && (now < startTime || now > endTime)) {
+                await showCustomNotice("Waktu pendaftaran sudah berakhir atau belum dimulai.", "Peringatan", "warning");
+                return;
+            }
             if (!selectedLembaga) {
                 errorMessage.classList.remove('hidden');
                 return;
             }
             errorMessage.classList.add('hidden');
-            resultNamaLembaga.textContent = selectedLembaga.nama;
-            displayNamaLembaga.textContent = selectedLembaga.nama;
-            inputSection.classList.add('hidden');
-            spinnerSection.classList.remove('hidden');
+
+            if (isAdminLoggedIn) {
+                displayNamaLembaga.textContent = selectedLembaga.nama;
+                inputSection.classList.add('hidden');
+                spinnerSection.classList.remove('hidden');
+            } else {
+                modalLembagaNama.textContent = selectedLembaga.nama;
+                kodeAksesModal.classList.remove('hidden');
+                kodeAksesInput.focus();
+            }
         });
 
-        spinBtn.addEventListener('click', function() {
-            const nomorSudahDipakai = daftarPeserta.map(p => p.nomor);
-            if (nomorSudahDipakai.length >= MAX_NUMBER) {
-                spinBtn.classList.add('hidden');
-                nomorHabisMessage.classList.remove('hidden');
-                spinnerDisplay.textContent = "---";
-                return;
+        function handleKodeAksesSubmit() {
+            const kodeInput = kodeAksesInput.value;
+            if (kodeInput === String(selectedLembaga.kode_akses)) {
+                kodeAksesError.classList.add('hidden');
+                kodeAksesModal.classList.add('hidden');
+                kodeAksesInput.value = '';
+                displayNamaLembaga.textContent = selectedLembaga.nama;
+                inputSection.classList.add('hidden');
+                spinnerSection.classList.remove('hidden');
+            } else {
+                kodeAksesError.classList.remove('hidden');
             }
-            spinBtn.disabled = true;
-            spinBtn.textContent = 'Memutar...';
-            spinBtn.classList.remove('bg-gradient-to-r', 'from-green-500', 'to-teal-500');
-            spinBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+        }
 
-            let spinInterval = setInterval(() => {
-                const randomNumber = Math.floor(Math.random() * MAX_NUMBER) + 1;
-                spinnerDisplay.textContent = String(randomNumber).padStart(3, '0');
-            }, SPIN_INTERVAL);
-
-            setTimeout(() => {
-                clearInterval(spinInterval);
-                let finalNumber;
-                do {
-                    finalNumber = Math.floor(Math.random() * MAX_NUMBER) + 1;
-                } while (nomorSudahDipakai.includes(finalNumber));
-                
-                const dataUntukDisimpan = { nomor: finalNumber, ...selectedLembaga };
-
-                fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'savePendaftaran', data: dataUntukDisimpan })
-                })
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error(`HTTP error! status: ${res.status}`);
-                    }
-                    return res.json();
-                })
-                .then(response => {
-                    if(response.status !== 'success') {
-                        throw new Error(response.message || 'Server mengembalikan error saat menyimpan.');
-                    }
-                    
-                    daftarPeserta.push(dataUntukDisimpan);
-                    updateDaftarTampilan();
-
-                    const formattedFinalNumber = String(finalNumber).padStart(3, '0');
-                    spinnerDisplay.textContent = formattedFinalNumber;
-                    nomorUrutDisplay.textContent = formattedFinalNumber;
-                    
-                    setTimeout(() => {
-                        spinnerSection.classList.add('hidden');
-                        resultSection.classList.remove('hidden');
-                    }, 1000);
-                })
-                .catch(err => {
-                    console.error('Error saat menyimpan:', err);
-                    alert(`Gagal menyimpan data ke server. Silakan coba lagi.\n\nDetail Error: ${err.message}`);
-                    
-                    spinBtn.disabled = false;
-                    spinBtn.textContent = 'Putar Sekarang!';
-                    spinBtn.classList.add('bg-gradient-to-r', 'from-green-500', 'to-teal-500');
-                    spinBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
-                });
-
-            }, SPIN_DURATION);
+        kodeAksesForm.addEventListener('submit', (e) => { e.preventDefault(); handleKodeAksesSubmit(); });
+        submitKodeAkses.addEventListener('click', handleKodeAksesSubmit);
+        cancelKodeAkses.addEventListener('click', () => {
+            kodeAksesModal.classList.add('hidden');
+            kodeAksesError.classList.add('hidden');
+            kodeAksesInput.value = '';
         });
         
         cancelBtn.addEventListener('click', function() {
             spinnerSection.classList.add('hidden');
             inputSection.classList.remove('hidden');
             spinBtn.disabled = false;
-            spinBtn.textContent = 'Putar Sekarang!';
-            spinBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+            spinBtn.textContent = 'Ambil Nomor!';
             spinBtn.classList.add('bg-gradient-to-r', 'from-green-500', 'to-teal-500');
+            spinBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
         });
 
         resetBtn.addEventListener('click', async function() {
+            if(isTrialAccessGranted){
+                location.reload();
+                return;
+            }
             resultSection.classList.add('hidden');
             inputSection.classList.remove('hidden');
             detailSekolahDiv.classList.add('hidden');
             searchInput.value = '';
             selectedLembaga = null;
-
             await loadDataFromServer();
-
             spinBtn.disabled = false;
-            spinBtn.textContent = 'Putar Sekarang!';
-            spinBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+            spinBtn.textContent = 'Ambil Nomor!';
             spinBtn.classList.add('bg-gradient-to-r', 'from-green-500', 'to-teal-500');
+            spinBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
             if (!nomorHabisMessage.classList.contains('hidden')) {
                 nomorHabisMessage.classList.add('hidden');
                 spinBtn.classList.remove('hidden');
@@ -458,48 +943,56 @@
             inputSection.classList.remove('hidden');
         });
 
-        async function exportToExcel() {
-            loadingOverlay.style.display = 'flex';
-            try {
-                const res = await fetch(`${WEB_APP_URL}?action=getDaftarPeserta&t=${new Date().getTime()}`);
-                if (!res.ok) throw new Error(`Gagal mengambil data untuk export (Status: ${res.status})`);
-                const serverData = await res.json();
-                const dataToExport = serverData.data || [];
-
-                if (dataToExport.length === 0) {
-                    alert("Tidak ada data untuk di-export.");
-                    return;
-                };
-
-                const masterDataMap = new Map(masterLembagaData.map(item => [item.npsn, item]));
-                
-                const headers = ['No. Urut', 'Nama Lembaga', 'NPSN', 'Status', 'Kecamatan', 'Jumlah Peserta', 'Guru 1', 'Jabatan 1', 'Guru 2', 'Jabatan 2', 'Guru 3', 'Jabatan 3'];
-                const rows = dataToExport.map(p => {
-                    const master = masterDataMap.get(p.npsn) || {};
-                    return [
-                        `'${String(p.nomor).padStart(3, '0')}`,
-                        `"${p.nama}"`, `"${p.npsn}"`, `"${p.status}"`, `"${p.kecamatan}"`,
-                        master.jumlah || '', `"${master.guru1 || ''}"`, `"${master.jabatan1 || ''}"`,
-                        `"${master.guru2 || ''}"`, `"${master.jabatan2 || ''}"`, `"${master.guru3 || ''}"`, `"${master.jabatan3 || ''}"`
-                    ];
-                });
-                let csvContent = "data:text/csv;charset=utf-8," + headers.join(",") + "\n" + rows.map(e => e.join(",")).join("\n");
-                var encodedUri = encodeURI(csvContent);
-                var link = document.createElement("a");
-                link.setAttribute("href", encodedUri);
-                link.setAttribute("download", "daftar_peserta_lomba_han_2025.csv");
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } catch(error) {
-                alert(`Gagal mengekspor data. \n\nDetail Error: ${error.message}`);
-            } finally {
-                loadingOverlay.style.display = 'none';
+        function handleExport() {
+            const password = exportPasswordInput.value;
+            if (password === KATA_SANDI_ADMIN) {
+                exportPasswordError.classList.add('hidden');
+                exportPasswordModal.classList.add('hidden');
+                exportPasswordInput.value = '';
+                exportToExcel();
+            } else {
+                exportPasswordError.classList.remove('hidden');
             }
         }
-        exportBtns.forEach(btn => btn.addEventListener('click', exportToExcel));
+        exportPasswordForm.addEventListener('submit', (e) => { e.preventDefault(); handleExport(); });
+        submitExport.addEventListener('click', handleExport);
+        cancelExport.addEventListener('click', () => {
+            exportPasswordModal.classList.add('hidden');
+            exportPasswordError.classList.add('hidden');
+            exportPasswordInput.value = '';
+        });
 
-        // --- Event Listener Utama ---
+        exportBtns.forEach(btn => btn.addEventListener('click', () => {
+             exportPasswordModal.classList.remove('hidden');
+             exportPasswordInput.focus();
+        }));
+
+        adminLoginForm.addEventListener('submit', (e) => { e.preventDefault(); handleAdminLogin(); });
+        submitAdminLogin.addEventListener('click', handleAdminLogin);
+        cancelAdminLogin.addEventListener('click', () => {
+            adminLoginModal.classList.add('hidden');
+            adminLoginError.classList.add('hidden');
+            adminPasswordInput.value = '';
+        });
+
+        function handleTrialAccessSubmit() {
+            if (trialAccessInput.value === KATA_SANDI_UJI_COBA) {
+                isTrialAccessGranted = true;
+                trialAccessModal.classList.add('hidden');
+                trialAccessInput.value = ''; // Membersihkan input
+                checkTimeRestriction(reliableCurrentTime);
+            } else {
+                trialAccessError.classList.remove('hidden');
+            }
+        }
+        trialAccessForm.addEventListener('submit', (e) => { e.preventDefault(); handleTrialAccessSubmit(); });
+        submitTrialAccess.addEventListener('click', handleTrialAccessSubmit);
+        cancelTrialAccess.addEventListener('click', () => {
+            trialAccessModal.classList.add('hidden');
+            trialAccessError.classList.add('hidden');
+            trialAccessInput.value = '';
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             loadDataFromServer();
         });
